@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { DbConnection } from 'src/database/db-connection/db-connection';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UserService {
-    constructor(private database:DbConnection){
+    constructor( @Inject('DbConnection') private database:DbConnection){
 
     }
 
