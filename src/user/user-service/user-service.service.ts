@@ -8,29 +8,20 @@ export class UserService {
 
     }
 
-    async createUser(data:Prisma.UserCreateInput){
+    async createUser(username:string,password:string,email:string){
+        const data = {
+            username:username,
+            password:password,
+            email:email
+        }
         return this.database.user.create({data});
     }
 
-    async getAllUser(){
-        return this.database.user.findMany();
-    }
 
-    async getUserById(id:number){
-        const user = this.database.user.findUnique({ where: { id } });
+    async getUserByEmail(email:string){
+        const user = this.database.user.findUnique({ where: { email } });
         return user;
     }
 
-    async updateUser(id: number, data: Prisma.UserUpdateInput){
-        const user = await this.getUserById(id);
-        return this.database.user.update({
-            where:{id:user.id},
-            data
-        });
-    }
 
-    async deleteUser(id:number){
-        const user = await this.getUserById(id);
-        return this.database.user.delete({ where: { id: user.id } });
-    }
 }
