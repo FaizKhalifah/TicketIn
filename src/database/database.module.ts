@@ -10,6 +10,7 @@ import { DbConnection } from './db-connection/db-connection';
     }
   }
     
-  ]
+  ],
+  exports: ['DbConnection'],
 })
 export class DatabaseModule {}
