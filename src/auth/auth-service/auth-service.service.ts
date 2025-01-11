@@ -23,7 +23,11 @@ export class AuthService {
         if(!(await bcrypt.compare(password,fetchedUser.password))){
             return "wrong password";
         }
-        const token = this.jwtService.sign({id:fetchedUser.id,email:fetchedUser.email});
+        const token = this.jwtService.sign({
+            sub: fetchedUser.id,
+            email: fetchedUser.email,
+          });
+          
         return {token};
     }
 }
