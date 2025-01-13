@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TicketServiceService } from './ticket-service.service';
-
-describe('TicketServiceService', () => {
-  let service: TicketServiceService;
+import { TicketService } from './ticket-service.service';
+import { DbConnection } from 'src/database/db-connection/db-connection';
+describe('TicketService', () => {
+  let service: TicketService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [TicketServiceService],
+      providers: [TicketService, DbConnection],
     }).compile();
 
-    service = module.get<TicketServiceService>(TicketServiceService);
+    service = module.get<TicketService>(TicketService);
   });
 
   it('should be defined', () => {
