@@ -22,6 +22,7 @@ export class TicketService {
     }
 
     async createTicket(userId:number,eventName:string,eventDate:Date,price:number){
+        console.log('Creating ticket:', { userId, eventName, eventDate, price })
         const data ={
             userId:userId,
             eventName:eventName,
